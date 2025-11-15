@@ -44,7 +44,7 @@ export default function Hero() {
         </h1>
         
         {/* Tagline */}
-        <p className="text-lg md:text-xl mt-12 md:mt-16 font-medium bg-[#ffbd59] text-[#ae4a84] rounded-full px-8 md:px-12 py-2 inline-block">
+        <p className="text-lg md:text-xl mt-12 md:mt-16 font-medium bg-[#ffbd59] text-[#ae4a84] rounded-full px-6 md:px-12 py-1 inline-block">
           From Solo to Squad, Carvaan has your back.
         </p>
       </div>
