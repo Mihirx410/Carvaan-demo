@@ -3,17 +3,21 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
+/**
+ * Header component with logo, navigation links, and sign-up button
+ * Features responsive design with mobile menu
+ */
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  // Purple-pink color matching the design
-  const logoColor = '#E91E63'; // Vibrant purple-pink
+  
+  // Brand color for logo and buttons
+  const logoColor = '#ae4a84';
 
   return (
-    <header className="relative z-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="flex items-center justify-between h-20 md:h-24">
-          {/* Logo - Each letter in a rounded square - Left side */}
+    <header className="relative z-10 w-full">
+      <div className="relative w-full">
+        <div className="flex items-center justify-between h-20 md:h-24 px-2 md:px-8">
+          {/* Logo - Left aligned */}
           <div className="flex items-center flex-shrink-0">
             <Link href="/" className="flex items-center">
               <div className="flex items-center gap-1">
@@ -33,43 +37,43 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation - Centered */}
-          <nav className="hidden md:flex items-center justify-center space-x-8 absolute left-1/2 transform -translate-x-1/2">
+          <nav className="hidden md:flex text-lg items-center justify-center space-x-10 absolute left-1/2 transform -translate-x-1/2">
             <Link 
-              href="/" 
+              href="#" 
               className="text-gray-800 hover:text-gray-600 transition-colors font-medium"
             >
               Home
             </Link>
             <Link 
-              href="/tours" 
+              href="#" 
               className="text-gray-800 hover:text-gray-600 transition-colors font-medium"
             >
               Tours
             </Link>
             <Link 
-              href="/blog" 
+              href="#" 
               className="text-gray-800 hover:text-gray-600 transition-colors font-medium"
             >
               Blog
             </Link>
             <Link 
-              href="/about" 
+              href="#" 
               className="text-gray-800 hover:text-gray-600 transition-colors font-medium"
             >
               About
             </Link>
           </nav>
 
-          {/* Sign Up Button - Right side */}
+          {/* Sign Up Button - Right aligned */}
           <div className="flex items-center flex-shrink-0">
             <button 
-              className="hidden md:block text-white px-6 py-2 rounded-md font-medium transition-opacity hover:opacity-90"
+              className="hidden md:block text-white px-8 py-2 text-lg rounded-full font-medium transition-opacity hover:opacity-90"
               style={{ backgroundColor: logoColor }}
             >
               Sign Up
             </button>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Toggle Button */}
             <button
               className="md:hidden text-gray-800 focus:outline-none"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -94,33 +98,33 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu Dropdown */}
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t">
             <nav className="flex flex-col space-y-4">
               <Link 
-                href="/" 
+                href="#" 
                 className="text-gray-800 hover:text-gray-600 transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </Link>
               <Link 
-                href="/tours" 
+                href="#" 
                 className="text-gray-800 hover:text-gray-600 transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Tours
               </Link>
               <Link 
-                href="/blog" 
+                href="#" 
                 className="text-gray-800 hover:text-gray-600 transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Blog
               </Link>
               <Link 
-                href="/about" 
+                href="#" 
                 className="text-gray-800 hover:text-gray-600 transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >

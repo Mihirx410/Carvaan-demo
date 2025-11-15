@@ -9,6 +9,10 @@ interface ContactFormData {
   message: string;
 }
 
+/**
+ * Footer component with contact information, quick links, and contact form
+ * Features two-column layout with form on the right
+ */
 export default function Footer() {
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
@@ -16,22 +20,31 @@ export default function Footer() {
     phone: '',
     message: ''
   });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
+  // Color scheme
+  const headingColor = "#800a4e";
+  const cardBg = "#ae4a84";
+  const btnBg = "#ffbd59";
+
+  /**
+   * Handle form input changes
+   */
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  /**
+   * Handle form submission
+   */
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setMessage(null);
 
-    // Simulate form submission
+    // Simulate API call
     setTimeout(() => {
       setMessage({ type: 'success', text: 'Thank you! Your message has been sent successfully.' });
       setFormData({ name: '', email: '', phone: '', message: '' });
@@ -39,141 +52,173 @@ export default function Footer() {
     }, 1000);
   };
 
-  const logoColor = '#E91E63'; // Purple-pink matching header
-
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
-          {/* Left Column - Logo and Social Media */}
-          <div className="lg:col-span-2">
-            {/* Logo */}
-            <div className="flex items-center mb-4">
-              <div className="flex items-center gap-1">
-                {'CARVAAN'.split('').map((letter, index) => (
-                  <div
-                    key={index}
-                    className="w-10 h-10 rounded-md flex items-center justify-center"
-                    style={{ backgroundColor: logoColor }}
-                  >
-                    <span className="text-white font-bold text-xl">
-                      {letter}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            {/* Tagline */}
-            <p className="text-white mb-6 text-sm">
-              From Solo to Squad, Carvaan has your back.
+    <footer className="bg-white py-20">
+      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16">
+        {/* Left Column - Contact Info & Quick Links */}
+        <div className="space-y-16">
+          {/* Contact Us Section */}
+          <div>
+            <h2 className="font-extrabold text-[34px] mb-6" style={{ color: headingColor }}>
+              Contact Us
+            </h2>
+
+            <p className="text-[#800a4e] max-w-md mb-8 text-md font-medium leading-relaxed">
+              Whether you have questions about our services, need support,
+              or want to share your feedback, our dedicated team is here
+              to assist you every step of the way.
             </p>
 
-            {/* Social Media Icons */}
-            <div className="flex gap-3">
-              {['Facebook', 'Instagram', 'Twitter', 'LinkedIn', 'YouTube'].map((social) => (
-                <a
-                  key={social}
-                  href="#"
-                  className="w-10 h-10 rounded-full flex items-center justify-center transition-opacity hover:opacity-80"
-                  style={{ backgroundColor: logoColor }}
-                  aria-label={social}
-                >
-                  <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
-                  </svg>
-                </a>
-              ))}
+            {/* Contact Information Grid */}
+            <div className="grid grid-cols-2 gap-6">
+              {/* Email */}
+              <div className="flex gap-3">
+                <div className="w-10 h-10 rounded-md bg-[#ffbd59] flex items-center justify-center">📧</div>
+                <div>
+                  <p className="font-bold text-[#800a4e]">Email</p>
+                  <p className="text-sm text-[#ae4a84]">support@carvaan.co</p>
+                </div>
+              </div>
+
+              {/* Website */}
+              <div className="flex gap-3">
+                <div className="w-10 h-10 rounded-md bg-[#ffbd59] flex items-center justify-center">🌐</div>
+                <div>
+                  <p className="font-bold text-[#800a4e]">Website</p>
+                  <p className="text-sm text-[#ae4a84]">reallygreatsite.com</p>
+                </div>
+              </div>
+
+              {/* Phone */}
+              <div className="flex gap-3">
+                <div className="w-10 h-10 rounded-md bg-[#ffbd59] flex items-center justify-center">📞</div>
+                <div>
+                  <p className="font-bold text-[#800a4e]">Phone</p>
+                  <p className="text-sm text-[#ae4a84]">+91 98765 43210</p>
+                </div>
+              </div>
+
+              {/* Location */}
+              <div className="flex gap-3">
+                <div className="w-10 h-10 rounded-md bg-[#ffbd59] flex items-center justify-center">📍</div>
+                <div>
+                  <p className="font-bold text-[#800a4e]">Location</p>
+                  <p className="text-sm text-[#ae4a84]">123 Anywhere St., Any City</p>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Middle Columns - Navigation Links */}
+          {/* Quick Links Section */}
           <div>
-            <h4 className="text-white font-bold mb-4">Company</h4>
-            <ul className="space-y-2">
-              <li><a href="/about" className="text-white hover:opacity-80 transition-opacity">About Us</a></li>
-              <li><a href="/careers" className="text-white hover:opacity-80 transition-opacity">Careers</a></li>
-              <li><a href="/blog" className="text-white hover:opacity-80 transition-opacity">Blog</a></li>
-              <li><a href="/press" className="text-white hover:opacity-80 transition-opacity">Press</a></li>
-            </ul>
+            <h2 className="font-extrabold text-[32px] mb-4" style={{ color: headingColor }}>
+              Quick Links
+            </h2>
+
+            <div className="grid grid-cols-2 gap-x-12">
+              {/* Column 1 */}
+              <ul className="list-disc list-inside space-y-2 marker:text-[#ae4a84] text-[#800a4e] font-semibold leading-none">
+                <li><a href="#" className="underline">About Us</a></li>
+                <li><a href="#" className="underline">Trips</a></li>
+                <li><a href="#" className="underline">Community</a></li>
+              </ul>
+
+              {/* Column 2 */}
+              <ul className="list-disc list-inside space-y-2 marker:text-[#ae4a84] text-[#800a4e] font-semibold leading-none">
+                <li><a href="#" className="underline">Carvaan Coins</a></li>
+                <li><a href="#" className="underline">FAQ</a></li>
+                <li><a href="#" className="underline">Login / Sign Up</a></li>
+              </ul>
+            </div>
           </div>
 
-          <div>
-            <h4 className="text-white font-bold mb-4">Support</h4>
-            <ul className="space-y-2">
-              <li><a href="/faq" className="text-white hover:opacity-80 transition-opacity">FAQ</a></li>
-              <li><a href="/contact" className="text-white hover:opacity-80 transition-opacity">Contact Us</a></li>
-              <li><a href="/how-it-works" className="text-white hover:opacity-80 transition-opacity">How it Works</a></li>
-              <li><a href="/testimonials" className="text-white hover:opacity-80 transition-opacity">Testimonials</a></li>
-            </ul>
-          </div>
+          {/* Copyright */}
+          <p className="text-sm font-extrabold text-[#ae4a84] pt-4">
+            © 2025 Carvaan. All rights reserved.
+          </p>
+        </div>
 
-          <div>
-            <h4 className="text-white font-bold mb-4">Legal</h4>
-            <ul className="space-y-2">
-              <li><a href="/terms" className="text-white hover:opacity-80 transition-opacity">Terms & Conditions</a></li>
-              <li><a href="/privacy" className="text-white hover:opacity-80 transition-opacity">Privacy Policy</a></li>
-              <li><a href="/cookies" className="text-white hover:opacity-80 transition-opacity">Cookie Policy</a></li>
-              <li><a href="/disclaimer" className="text-white hover:opacity-80 transition-opacity">Disclaimer</a></li>
-            </ul>
-          </div>
+        {/* Right Column - Contact Form */}
+        <div>
+          <div
+            className="rounded-3xl p-10 shadow-lg"
+            style={{ backgroundColor: cardBg }}
+          >
+            <h2 className="text-white text-[44px] font-extrabold mb-6">
+              Get in touch.
+            </h2>
 
-          {/* Right Column - Contact Form */}
-          <div className="lg:col-span-2">
-            <h3 className="text-white font-bold mb-4">Contact Us</h3>
-            <form onSubmit={handleSubmit} className="space-y-3">
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Your Name"
-                className="w-full px-4 py-2 rounded-md bg-white text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                required
-              />
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Your Email"
-                className="w-full px-4 py-2 rounded-md bg-white text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                required
-              />
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                placeholder="Your Phone"
-                className="w-full px-4 py-2 rounded-md bg-white text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                required
-              />
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="Your Message"
-                rows={3}
-                className="w-full px-4 py-2 rounded-md bg-white text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:outline-none resize-none"
-                required
-              />
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              {/* Name Field */}
+              <div className="flex flex-col space-y-1">
+                <label className="text-white font-medium text-base">Your Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2.5 rounded-md bg-white text-gray-900"
+                  required
+                />
+              </div>
+
+              {/* Email Field */}
+              <div className="flex flex-col space-y-1">
+                <label className="text-white font-medium text-base">Email Address</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2.5 rounded-lg bg-white text-gray-900"
+                  required
+                />
+              </div>
+
+              {/* Phone Field */}
+              <div className="flex flex-col space-y-1">
+                <label className="text-white font-medium text-base">Phone Number</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2.5 rounded-lg bg-white text-gray-900"
+                  required
+                />
+              </div>
+
+              {/* Message Field */}
+              <div className="flex flex-col space-y-1">
+                <label className="text-white font-medium text-base">Message</label>
+                <textarea
+                  name="message"
+                  rows={3}
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2.5 rounded-lg bg-white text-gray-900 resize-none"
+                  required
+                />
+              </div>
+
+              {/* Submit Button */}
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full text-white px-6 py-2 rounded-md font-medium transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
-                style={{ backgroundColor: logoColor }}
+                className="px-6 py-1 rounded-md font-bold text-[#ae4a84] disabled:opacity-50 disabled:cursor-not-allowed"
+                style={{ backgroundColor: btnBg }}
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {isSubmitting ? "Sending..." : "Submit"}
               </button>
             </form>
 
+            {/* Success/Error Message */}
             {message && (
               <div
                 className={`mt-4 p-3 rounded-md ${
-                  message.type === 'success'
-                    ? 'bg-green-100 text-green-700'
-                    : 'bg-red-100 text-red-700'
+                  message.type === "success"
+                    ? "bg-green-100 text-green-700"
+                    : "bg-red-100 text-red-700"
                 }`}
               >
                 {message.text}
@@ -181,15 +226,7 @@ export default function Footer() {
             )}
           </div>
         </div>
-
-        {/* Copyright */}
-        <div className="mt-8 pt-8 border-t border-gray-700">
-          <p className="text-center text-gray-400 text-sm">
-            © 2025 Carvaan. All rights reserved.
-          </p>
-        </div>
       </div>
     </footer>
   );
 }
-
