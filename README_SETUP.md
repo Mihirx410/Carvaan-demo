@@ -1,7 +1,7 @@
 # CARVAAN - Travel Website
 
 ## Overview
-This is a frontend travel website built with Next.js and React.
+This is a frontend travel demo website built with Next.js and React.
 
 ## Prerequisites
 - Node.js (v18 or higher)
@@ -26,7 +26,7 @@ npm run dev
 
 ## Project Structure
 
-```
+
 my-app/
 ├── app/                    # Next.js app directory
 │   ├── page.tsx           # Homepage
@@ -37,20 +37,11 @@ my-app/
 │   ├── Hero.tsx          # Hero section with search
 │   ├── SearchBar.tsx     # Search form component
 │   ├── HowItWorks.tsx    # How it works section
-│   └── Footer.tsx        # Footer with contact form
+│   ├── Footer.tsx        # Footer with contact form
+│   └── ScrollProvider.tsx # Smooth scroll provider (Lenis)
 └── package.json          # Dependencies and scripts
-```
 
-## Features
 
-### Frontend
-- ✅ Responsive header with navigation
-- ✅ Hero section with background image
-- ✅ Search bar with date pickers
-- ✅ "How Carvaan Works" section
-- ✅ Footer with contact form
-- ✅ Mobile-responsive design
-- ✅ Form validation and error handling
 
 ## Available Scripts
 
@@ -59,14 +50,6 @@ my-app/
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint
 
-## Next Steps
-
-1. Add authentication
-2. Implement trip listing and booking
-3. Add payment integration
-4. Create user dashboard
-5. Add email notifications
-6. Implement search results page
 
 ## Support
 
