@@ -9,7 +9,7 @@ export default function HowItWorks() {
   // Card rotation angles for polaroid effect
   const rotations = ['-4deg', '2deg', '-2deg', '3deg'];
   
-  // Step data for each card
+  // Step data for each card (4 cards as per design)
   const steps = [
     {
       title: 'Search & Compare',

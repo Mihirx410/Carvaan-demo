@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -11,7 +12,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   // Brand color for logo and buttons
-  const logoColor = '#ae4a84';
+  const textColor = '#ae4a84';
 
   return (
     <header className="relative z-10 w-full">
@@ -20,24 +21,19 @@ export default function Header() {
           {/* Logo - Left aligned */}
           <div className="flex items-center flex-shrink-0">
             <Link href="/" className="flex items-center">
-              <div className="flex items-center gap-1">
-                {'CARVAAN'.split('').map((letter, index) => (
-                  <div
-                    key={index}
-                    className="w-10 h-10 md:w-12 md:h-12 rounded-md flex items-center justify-center"
-                    style={{ backgroundColor: logoColor }}
-                  >
-                    <span className="text-white font-bold text-xl md:text-2xl">
-                      {letter}
-                    </span>
-                  </div>
-                ))}
-              </div>
+              <Image
+                src="/logo.png"
+                alt="Carvaan"
+                width={236}
+                height={43}
+                priority
+                className="h-10 md:h-12 w-auto"
+              />
             </Link>
           </div>
 
           {/* Desktop Navigation - Centered */}
-          <nav className="hidden md:flex text-lg items-center justify-center space-x-10 absolute left-1/2 transform -translate-x-1/2">
+          <nav className="hidden md:flex text-lg items-center justify-center space-x-8 absolute left-1/2 transform -translate-x-1/2">
             <Link 
               href="#" 
               className="text-gray-800 hover:text-gray-600 transition-colors font-medium"
@@ -48,19 +44,37 @@ export default function Header() {
               href="#" 
               className="text-gray-800 hover:text-gray-600 transition-colors font-medium"
             >
-              Tours
+              About Us
             </Link>
             <Link 
               href="#" 
               className="text-gray-800 hover:text-gray-600 transition-colors font-medium"
             >
-              Blog
+              Trips
             </Link>
             <Link 
               href="#" 
               className="text-gray-800 hover:text-gray-600 transition-colors font-medium"
             >
-              About
+              Community
+            </Link>
+            <Link 
+              href="#" 
+              className="text-gray-800 hover:text-gray-600 transition-colors font-medium"
+            >
+              Coins
+            </Link>
+            <Link 
+              href="#" 
+              className="text-gray-800 hover:text-gray-600 transition-colors font-medium"
+            >
+              FAQ
+            </Link>
+            <Link 
+              href="#" 
+              className="text-gray-800 hover:text-gray-600 transition-colors font-medium"
+            >
+              Contact
             </Link>
           </nav>
 
@@ -68,7 +82,7 @@ export default function Header() {
           <div className="flex items-center flex-shrink-0">
             <button 
               className="hidden md:block text-white px-8 py-2 text-lg rounded-full font-medium transition-opacity hover:opacity-90"
-              style={{ backgroundColor: logoColor }}
+              style={{ color: textColor }}
             >
               Sign Up
             </button>
@@ -114,25 +128,46 @@ export default function Header() {
                 className="text-gray-800 hover:text-gray-600 transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Tours
+                About Us
               </Link>
               <Link 
                 href="#" 
                 className="text-gray-800 hover:text-gray-600 transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Blog
+                Trips
               </Link>
               <Link 
                 href="#" 
                 className="text-gray-800 hover:text-gray-600 transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
-                About
+                Community
+              </Link>
+              <Link 
+                href="#" 
+                className="text-gray-800 hover:text-gray-600 transition-colors font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Coins
+              </Link>
+              <Link 
+                href="#" 
+                className="text-gray-800 hover:text-gray-600 transition-colors font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                FAQ
+              </Link>
+              <Link 
+                href="#" 
+                className="text-gray-800 hover:text-gray-600 transition-colors font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Contact
               </Link>
               <button 
                 className="text-white px-6 py-2 rounded-md font-medium w-full text-left transition-opacity hover:opacity-90"
-                style={{ backgroundColor: logoColor }}
+                style={{ color: textColor }}
               >
                 Sign Up
               </button>
