@@ -72,7 +72,16 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
+    <section
+      className="py-16 md:py-24 bg-white"
+      style={{
+        backgroundImage: "url('/howitworks_bg.png')",
+        backgroundSize: '100% 100%',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        minHeight: '600px'
+      }}
+    >
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
         {/* Section Title */}
         <h2 className="text-4xl md:text-5xl font-bold text-[#ae4a84] text-center mb-12 uppercase">

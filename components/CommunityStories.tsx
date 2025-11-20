@@ -46,7 +46,7 @@ export default function CommunityStories() {
 
   return (
     <section className="py-20 bg-white">
-      <div className="max-w-6xl mx-auto px-4 text-center">
+      <div className="max-w-7xl mx-auto px-4 text-center">
         <h2 className="text-4xl md:text-5xl font-bold text-[#2d1f25] mb-4">
           Carvaan Community & Stories
         </h2>
@@ -55,30 +55,47 @@ export default function CommunityStories() {
           labore et dolore magna aliqua.
         </p>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="relative flex items-center justify-center gap-6 min-h-[440px] px-4">
           {stories.map((story, index) => {
             const isActive = index === activeIndex;
+            
             return (
               <button
                 key={story.name}
                 onClick={() => setActiveIndex(index)}
-                className={`text-left bg-white rounded-2xl px-6 py-8 transition-all duration-300 focus:outline-none ${
+                className={`text-left bg-[#FFFAFA] rounded-2xl transition-all duration-300 ease-in-out focus:outline-none shadow-[8px_8px_20px_rgba(0,0,0,0.12),-8px_8px_20px_rgba(0,0,0,0.12),0px_8px_20px_rgba(0,0,0,0.12)] flex-shrink-0 ${
                   isActive
-                    ? 'shadow-[0px_25px_45px_rgba(0,0,0,0.18)] scale-[1.03]'
-                    : 'shadow-[0px_6px_20px_rgba(18,18,18,0.08)] hover:shadow-[0px_18px_30px_rgba(0,0,0,0.12)]'
+                    ? 'w-[334px] h-[440px] px-8 py-10 z-10'
+                    : 'w-[265px] h-[349px] px-6 py-8 hover:opacity-90'
                 }`}
               >
-                <div className="w-20 h-20 rounded-xl overflow-hidden mx-auto mb-5">
+                <div className={`rounded-xl overflow-hidden mx-auto mb-5 transition-all duration-300 ${
+                  isActive ? 'w-24 h-24' : 'w-20 h-20'
+                }`}>
                   <img src={story.avatar} alt={story.name} className="w-full h-full object-cover" />
                 </div>
-                <h3 className="text-xl font-semibold text-[#2d1f25] text-center">{story.name}</h3>
-                <p className="text-sm text-gray-500 text-center mb-4">{story.role}</p>
-                <p className="text-sm text-gray-600 leading-relaxed text-center mb-6">{story.story}</p>
+                <h3 className={`font-semibold text-[#2d1f25] text-center transition-all duration-300 ${
+                  isActive ? 'text-2xl mb-2' : 'text-xl mb-1'
+                }`}>
+                  {story.name}
+                </h3>
+                <p className={`text-gray-500 text-center transition-all duration-300 ${
+                  isActive ? 'text-base mb-5' : 'text-sm mb-4'
+                }`}>
+                  {story.role}
+                </p>
+                <p className={`text-gray-600 leading-relaxed text-center transition-all duration-300 ${
+                  isActive ? 'text-base mb-7' : 'text-sm mb-6'
+                }`}>
+                  {story.story}
+                </p>
                 <div className="flex justify-center gap-1">
                   {Array.from({ length: story.rating }).map((_, starIndex) => (
                     <svg
                       key={starIndex}
-                      className="w-4 h-4 text-[#ffbd59]"
+                      className={`text-[#ffbd59] transition-all duration-300 ${
+                        isActive ? 'w-5 h-5' : 'w-4 h-4'
+                      }`}
                       viewBox="0 0 24 24"
                       fill="currentColor"
                     >

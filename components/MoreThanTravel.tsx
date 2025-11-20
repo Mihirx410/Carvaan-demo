@@ -1,45 +1,63 @@
-/**
- * More Than Travel banner section component
- * Features a large banner image with text overlay
- */
+import Image from "next/image";
+
 export default function MoreThanTravel() {
   return (
-    <section className="relative min-h-[500px] md:min-h-[600px] flex items-center justify-center overflow-hidden my-16">
-      {/* Background Image Container */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070)',
-        }}
-      >
-        {/* Gradient Overlay */}
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: 'linear-gradient(to right, rgba(139, 69, 139, 0.7), rgba(139, 90, 43, 0.7))'
-          }}
-        />
-      </div>
+    <>
+      {/* HERO SECTION */}
+      <section className="relative min-h-[680px] overflow-visible">
 
-      {/* Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 text-center">
-        <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 uppercase" style={{ lineHeight: '1.1' }}>
-          More Than Travel.
-        </h2>
-        <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white uppercase" style={{ lineHeight: '1.1' }}>
-          A Marketplace That Works for You.
-        </h3>
-      </div>
-
-      {/* Purple Background Section Below */}
-      <div className="relative z-10 w-full bg-[#ae4a84] py-12 mt-16">
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 text-center">
-          <p className="text-white text-lg md:text-xl max-w-3xl mx-auto">
-            Experience travel like never before. Join thousands of travelers who trust Carvaan for their group adventures.
-          </p>
+        {/* BACKGROUND IMAGE */}
+        <div className="absolute inset-0">
+          <Image
+            src="/3rd.png"
+            alt="Travelers overlooking mountains"
+            fill
+            priority
+            className="object-cover object-center"
+          />
         </div>
-      </div>
-    </section>
+
+        {/* TEXT BLOCK */}
+        <div className="relative max-w-[1350px] mx-auto px-0 pt-36 z-[5]">
+
+          <h2 className="text-[58px] md:text-[72px] leading-[1.72] text-white font-semibold 
+                         drop-shadow-[0_10px_35px_rgba(0,0,0,1)] max-w-[900px]">
+            More Than Travel.
+            <br />
+            A Marketplace That Works for You.
+          </h2>
+        </div>
+
+        {/* FIRST BOX — NOW VISIBLE + OVERLAPPING */}
+        <div
+          className="absolute left-0   right-0 z-[10]"
+          style={{ bottom: "-40px" }}
+        >
+          <div className="max-w-[1350px] mx-auto px-0">
+            <div
+               className="w-full max-w-[900px] rounded-full bg-[#d9bfdc] text-[#4d2456]
+                          px-6 sm:px-10 lg:px-14 py-6 text-base md:text-lg font-semibold 
+                         shadow-[0_25px_45px_rgba(0,0,0,0.25)]"
+            >
+              One Place. Zero Stress. Compare providers in one click.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* WHITE SECTION */}
+      <section className="bg-white pt-[60px] pr-[0px] pb-20">
+         <div className="max-w-[1350px] mx-auto px-0">
+           <div className="flex flex-col gap-3">
+             <div className="w-full max-w-[900px] rounded-full bg-[#b04081] text-white px-6 sm:px-10 lg:px-14 py-6 text-base md:text-lg font-semibold shadow-[0_20px_40px_rgba(0,0,0,0.15)]">
+               Trips for Everyone. Friends, Couples, Families, Solo.
+             </div>
+             <div className="w-full max-w-[880px] rounded-full bg-[#f7b74c] text-[#5c2d4d] px-6 sm:px-10 lg:px-14 py-6 text-base md:text-lg font-semibold shadow-[0_20px_40px_rgba(0,0,0,0.15)]">
+               Carvaan Coins. Every booking = future savings.
+             </div>
+           </div>
+         </div>
+      </section>
+    </>
   );
 }
-
