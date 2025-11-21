@@ -58,44 +58,78 @@ export default function CommunityStories() {
         <div className="relative flex items-center justify-center gap-6 min-h-[440px] px-4">
           {stories.map((story, index) => {
             const isActive = index === activeIndex;
-            
+
             return (
               <button
                 key={story.name}
                 onClick={() => setActiveIndex(index)}
-                className={`text-left bg-[#FFFAFA] rounded-2xl transition-all duration-300 ease-in-out focus:outline-none shadow-[8px_8px_20px_rgba(0,0,0,0.12),-8px_8px_20px_rgba(0,0,0,0.12),0px_8px_20px_rgba(0,0,0,0.12)] flex-shrink-0 ${
+                className={`text-left bg-[#FFFAFA] rounded-2xl transition-all duration-300 ease-in-out focus:outline-none shadow-[8px_8px_20px_rgba(0,0,0,0.12),-8px_8px_20px_rgba(0,0,0,0.12),0px_8px_20px_rgba(0,0,0,0.12)] flex-shrink-0 flex flex-col ${
                   isActive
                     ? 'w-[334px] h-[440px] px-8 py-10 z-10'
                     : 'w-[265px] h-[349px] px-6 py-8 hover:opacity-90'
                 }`}
               >
-                <div className={`rounded-xl overflow-hidden mx-auto mb-5 transition-all duration-300 ${
-                  isActive ? 'w-24 h-24' : 'w-20 h-20'
-                }`}>
+                <div
+                  className="rounded-xl overflow-hidden mx-auto mb-5 flex-shrink-0 transition-all duration-300"
+                  style={{
+                    width: isActive ? '96px' : '80px',
+                    height: isActive ? '96px' : '80px'
+                  }}
+                >
                   <img src={story.avatar} alt={story.name} className="w-full h-full object-cover" />
                 </div>
-                <h3 className={`font-semibold text-[#2d1f25] text-center transition-all duration-300 ${
-                  isActive ? 'text-2xl mb-2' : 'text-xl mb-1'
-                }`}>
-                  {story.name}
-                </h3>
-                <p className={`text-gray-500 text-center transition-all duration-300 ${
-                  isActive ? 'text-base mb-5' : 'text-sm mb-4'
-                }`}>
-                  {story.role}
-                </p>
-                <p className={`text-gray-600 leading-relaxed text-center transition-all duration-300 ${
-                  isActive ? 'text-base mb-7' : 'text-sm mb-6'
-                }`}>
-                  {story.story}
-                </p>
-                <div className="flex justify-center gap-1">
+
+                {/* FIX APPLIED HERE */}
+                <div
+                  className="flex flex-col mx-auto flex-shrink-0 transition-all duration-300"
+                  style={{
+                    width: '100%',
+                    maxWidth: isActive ? '260px' : '230px'
+                  }}
+                >
+                  <h3
+                    className="font-semibold text-[#2d1f25] text-center transition-all duration-300"
+                    style={{
+                      fontSize: isActive ? '1.5rem' : '1.25rem',
+                      lineHeight: isActive ? '2rem' : '1.75rem',
+                      marginBottom: isActive ? '0.5rem' : '0.25rem'
+                    }}
+                  >
+                    {story.name}
+                  </h3>
+
+                  <p
+                    className="text-gray-500 text-center transition-all duration-300"
+                    style={{
+                      fontSize: isActive ? '1rem' : '0.875rem',
+                      lineHeight: isActive ? '1.5rem' : '1.25rem',
+                      marginBottom: isActive ? '1.25rem' : '1rem'
+                    }}
+                  >
+                    {story.role}
+                  </p>
+
+                  <p
+                    className="text-gray-600 leading-relaxed text-center overflow-hidden transition-all duration-300"
+                    style={{
+                      fontSize: isActive ? '1rem' : '0.875rem',
+                      lineHeight: isActive ? '1.5rem' : '1.25rem',
+                      marginBottom: isActive ? '1.75rem' : '1.5rem'
+                    }}
+                  >
+                    {story.story}
+                  </p>
+                </div>
+
+                <div className="flex justify-center gap-1 flex-shrink-0">
                   {Array.from({ length: story.rating }).map((_, starIndex) => (
                     <svg
                       key={starIndex}
-                      className={`text-[#ffbd59] transition-all duration-300 ${
-                        isActive ? 'w-5 h-5' : 'w-4 h-4'
-                      }`}
+                      className="text-[#ffbd59] transition-all duration-300"
+                      style={{
+                        width: isActive ? '20px' : '16px',
+                        height: isActive ? '20px' : '16px'
+                      }}
                       viewBox="0 0 24 24"
                       fill="currentColor"
                     >
@@ -108,13 +142,10 @@ export default function CommunityStories() {
           })}
         </div>
 
-        <button
-          className="mt-12 inline-flex items-center justify-center rounded-full px-8 py-3 text-base md:text-lg font-semibold text-[#b04081] bg-[#ffbd59] shadow-[0px_12px_30px_rgba(255,189,89,0.4)]"
-        >
+        <button className="mt-12 inline-flex items-center justify-center rounded-full px-8 py-3 text-base md:text-lg font-semibold text-[#b04081] bg-[#ffbd59] shadow-[0px_12px_30px_rgba(255,189,89,0.4)]">
           Join the Carvaan Community
         </button>
       </div>
     </section>
   );
 }
-

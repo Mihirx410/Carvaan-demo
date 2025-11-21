@@ -35,13 +35,13 @@ export default function Header() {
           {/* Desktop Navigation - Centered */}
           <nav className="hidden md:flex text-lg items-center justify-center space-x-8 absolute left-1/2 transform -translate-x-1/2">
             <Link 
-              href="#" 
+              href="/" 
               className="text-gray-800 hover:text-gray-600 transition-colors font-medium"
             >
               Home
             </Link>
             <Link 
-              href="#" 
+              href="/about" 
               className="text-gray-800 hover:text-gray-600 transition-colors font-medium"
             >
               About Us
@@ -117,14 +117,14 @@ export default function Header() {
           <div className="md:hidden py-4 border-t">
             <nav className="flex flex-col space-y-4">
               <Link 
-                href="#" 
+                href="/" 
                 className="text-gray-800 hover:text-gray-600 transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </Link>
               <Link 
-                href="#" 
+                href="/about" 
                 className="text-gray-800 hover:text-gray-600 transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
