@@ -1,0 +1,207 @@
+# CARVAAN Project - Cursor AI Rules
+
+## Project Overview
+This is a travel website project called "CARVAAN" built with Next.js 16, React 19, TypeScript, and Tailwind CSS. The project is located in the `Carvaan-demo/` folder.
+
+## Critical Working Principles
+
+### 1. UNDERSTAND BEFORE ACTING
+- **NEVER** start working on any task without fully understanding the requirements
+- If a prompt is unclear, ambiguous, or incomplete, ASK for clarification first
+- Read and analyze relevant files before making changes
+- Understand the project structure and file organization before editing
+- Check existing code patterns and conventions before implementing new features
+
+### 2. ERROR HANDLING MANDATE
+- **ALWAYS** check for errors after making changes
+- Run linter checks: `npm run lint` (if available)
+- Check TypeScript compilation errors
+- Verify imports and path aliases are correct
+- If errors are found, fix them immediately before proceeding
+- Never leave broken code in the project
+
+### 3. NO UNAUTHORIZED CHANGES
+- **ONLY** make changes that are explicitly requested
+- Do NOT add features, optimizations, or "improvements" unless asked
+- Do NOT refactor code unless specifically requested
+- Do NOT change styling, formatting, or structure unless it's part of the task
+- Do NOT add comments, documentation, or README files unless requested
+- Preserve existing code patterns and conventions
+
+### 4. FIGMA UI CLONING WORKFLOW
+- **The user will provide Figma UI images** - These are the design references to clone exactly
+- **The user will also provide UI images** - These show the current implementation to identify errors and differences
+- **When working with Figma images**:
+  1. Carefully examine the Figma design image provided
+  2. Analyze colors, spacing, typography, layout, and component structure
+  3. Compare with the current UI image to identify discrepancies
+  4. Clone the Figma design EXACTLY as shown - match every detail
+  5. Pay attention to:
+     - Exact pixel spacing and margins
+     - Color codes and gradients
+     - Font sizes, weights, and line heights
+     - Border radius and shadows
+     - Image dimensions and aspect ratios
+     - Responsive breakpoints
+  6. Make the implementation match the Figma design precisely
+- **When comparing with UI images**:
+  1. Identify visual differences between current implementation and Figma design
+  2. Note any layout issues, spacing problems, or styling mismatches
+  3. Fix all discrepancies to match the Figma design exactly
+  4. Ensure responsive behavior matches the design at all breakpoints
+
+### 4.1. FIGMA_INSTRUCTIONS FILE USAGE
+- **IMPORTANT**: The `FIGMA_INSTRUCTIONS` file contains detailed CSS and implementation instructions for specific sections
+- **ONLY use this file when explicitly mentioned** - The user must explicitly state in their prompt to "follow the figma instruction file" or similar phrasing for a specific section
+- **When the user requests to follow FIGMA_INSTRUCTIONS**:
+  1. Read the `FIGMA_INSTRUCTIONS` file located in the project root
+  2. Search for the specific section mentioned by the user (e.g., "hero section", "header", "footer", etc.)
+  3. Extract the CSS properties, styling instructions, and any specific implementation details for that section
+  4. Apply the CSS and instructions exactly as specified in the file
+  5. Match the exact values, properties, and structure provided in the instructions
+  6. If the section is not found in the file, inform the user and proceed with standard Figma image analysis
+- **Do NOT reference this file unless explicitly requested** - Only check `FIGMA_INSTRUCTIONS` when the user's prompt specifically mentions it
+- **Section matching**: Look for section names in the file that match or are similar to the section the user mentioned (e.g., "hero", "header", "footer", "logo", etc.)
+
+### 5. STEP-BY-STEP WORKFLOW
+
+#### Before Starting Any Task:
+1. **Read the prompt carefully** - Understand exactly what is being asked
+2. **Examine provided images** - If Figma or UI images are provided, analyze them thoroughly
+3. **Identify the target location** - All work is in `Carvaan-demo/` folder
+4. **Examine existing code** - Read relevant files to understand current patterns
+5. **Check project structure** - Understand file organization and path aliases
+6. **Verify dependencies** - Ensure required packages are available
+
+#### During Implementation:
+1. **Make minimal changes** - Only modify what's necessary to match the design
+2. **Follow existing patterns** - Match code style and structure
+3. **Use correct path aliases**:
+   - `@/*` points to project root (Carvaan-demo/)
+   - Images: `/logo.png`, `/hero.png`, etc. (direct in public/)
+4. **Maintain component structure**:
+   - All components in root `components/` folder
+   - Layout components: `components/Header.tsx`, `components/Footer.tsx`
+   - Section components: `components/Hero.tsx`, `components/HowItWorks.tsx`, etc.
+   - UI components: `components/SearchBar.tsx`, `components/ScrollProvider.tsx`
+
+#### After Making Changes:
+1. **Check for errors** - Run linting and type checking
+2. **Verify imports** - Ensure all imports are correct
+3. **Test file paths** - Confirm image paths and asset references
+4. **Compare with design** - Verify implementation matches Figma design (if provided)
+5. **Review changes** - Ensure only requested changes were made
+
+## Project Structure Details
+
+### Carvaan-demo Structure:
+```
+Carvaan-demo/
+├── app/                    # Next.js app directory
+│   ├── page.tsx           # Homepage
+│   ├── layout.tsx         # Root layout with ScrollProvider
+│   └── globals.css        # Global styles
+├── components/            # All components (flat structure)
+│   ├── Header.tsx
+│   ├── Hero.tsx
+│   ├── SearchBar.tsx
+│   ├── HowItWorks.tsx
+│   ├── ExploreDestinations.tsx
+│   ├── MoreThanTravel.tsx
+│   ├── CommunityStories.tsx
+│   ├── BuildCustomTrip.tsx
+│   ├── PlanSmarter.tsx
+│   ├── TravelPaysBack.tsx
+│   ├── Footer.tsx
+│   └── ScrollProvider.tsx
+└── public/                # Static assets
+    ├── logo.png
+    ├── hero.png
+    └── [other images]
+```
+
+## Technical Specifications
+
+### Technology Stack:
+- **Framework**: Next.js 16.0.3
+- **React**: 19.2.0
+- **TypeScript**: ^5
+- **Styling**: Tailwind CSS ^4
+- **Smooth Scroll**: @studio-freight/lenis ^1.0.42
+
+### Path Aliases:
+- `@/*` resolves to project root (Carvaan-demo/ folder)
+- Use `@/components/...` for component imports
+- Use `@/app/...` for app directory imports
+
+### Image Paths:
+- All images are directly in `public/` folder
+- Use paths like: `/logo.png`, `/hero.png`, `/image1.png`, etc.
+- Use Next.js `Image` component for all images
+
+### Component Patterns:
+- Use `'use client'` directive for client components
+- Use Next.js `Image` component for images
+- Use Next.js `Link` component for navigation
+- Brand color: `#ae4a84` (used in Header and other components)
+
+## Common Tasks & Guidelines
+
+### Cloning from Figma Design:
+1. **Analyze the Figma image** - Study colors, spacing, typography, layout
+2. **Compare with current UI** - Identify differences using provided UI images
+3. **Measure spacing** - Use exact pixel values from Figma
+4. **Match colors exactly** - Use exact hex codes from Figma
+5. **Replicate typography** - Match font family, size, weight, line height
+6. **Match layout structure** - Replicate flexbox/grid layouts exactly
+7. **Test responsiveness** - Ensure design matches at all breakpoints
+
+### Adding a New Component:
+1. Create component in `components/` folder
+2. Follow existing component patterns (use 'use client' if needed)
+3. Use TypeScript with proper types
+4. Use Tailwind CSS for styling
+5. Export as default export
+6. Add to `app/page.tsx` if it's a section component
+
+### Modifying Existing Components:
+1. Read the component file first
+2. Understand the current implementation
+3. Compare with Figma design (if provided)
+4. Make only the requested changes
+5. Preserve existing functionality unless explicitly asked to change it
+6. Match Figma design exactly for styling
+
+### Fixing Errors:
+1. Read the error message carefully
+2. Identify the root cause
+3. Check related files and imports
+4. Fix the specific issue
+5. Verify the fix resolves the error
+6. Do not introduce new errors while fixing
+
+## Important Reminders
+
+- **Always ask for clarification** if the task is unclear
+- **Never assume** - verify file paths, imports, and structure
+- **Preserve existing code** - only change what's requested
+- **Check for errors** after every change
+- **Follow the project structure** - use correct folders and paths
+- **Maintain consistency** - match existing code patterns and style
+- **Match Figma designs exactly** - Pay attention to every detail when cloning designs
+- **Compare with UI images** - Use provided UI images to identify and fix discrepancies
+
+## When to Stop and Ask
+
+Stop and ask for clarification if:
+- The prompt is ambiguous or unclear
+- Figma images are unclear or missing important details
+- You cannot determine exact spacing, colors, or typography from the design
+- The requested change conflicts with existing patterns
+- You need to make assumptions about requirements
+- The task requires decisions that weren't specified
+- You encounter unexpected project structure or dependencies
+
+---
+
+**Remember**: Quality over speed. Understanding before action. Fix errors immediately. Make only requested changes. Clone Figma designs exactly as shown.
