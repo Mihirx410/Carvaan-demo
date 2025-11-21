@@ -35,12 +35,11 @@ export default function MoreThanTravel() {
         {/* FIRST (PURPLE-LIGHT) BOX */}
         <div
           className="absolute left-0 z-[12]"
-          style={{ bottom: "-55px" }}
+          style={{ bottom: "-55px", width: "70%" }}
         >
           <div
             className="px-14 py-8 text-2xl font-semibold shadow-[0_25px_55px_rgba(0,0,0,0.18)] rounded-r-2xl"
             style={{
-              width: "1220px",
               backgroundColor: "#d9bfdc",
               color: "#4d2456",
             }}
@@ -62,7 +61,7 @@ export default function MoreThanTravel() {
           <div
             className="px-14 py-8 text-2xl font-semibold shadow-[0_25px_55px_rgba(0,0,0,0.15)] rounded-r-2xl"
             style={{
-              width: "1050px",
+              width: "60%",
               backgroundColor: "#b04081",
               color: "#ffffff",
               marginTop: "-10px"
@@ -79,7 +78,7 @@ export default function MoreThanTravel() {
           <div
             className="px-14 py-8 text-2xl font-semibold shadow-[0_25px_55px_rgba(0,0,0,0.15)] rounded-r-2xl"
             style={{
-              width: "900px",
+              width: "50%",
               backgroundColor: "#f7b74c",
               color: "#5c2d4d",
               marginTop: "-10px"
